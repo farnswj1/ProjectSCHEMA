@@ -1,2 +1,2 @@
-Project SCHEMA
+# Project SCHEMA
 This is a web application that allows users to manage enrollment by allowing students to enroll/drop courses while also allowing professors and administrators to handle waitlist entries submitted by the students. Administrators have the ability to manage enrollment, manage user accounts, and create/modify/delete courses, meanwhile professors can revise the course information if necessary.
