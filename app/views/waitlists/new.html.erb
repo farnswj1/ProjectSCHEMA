@@ -1,0 +1,19 @@
+<!--
+# Project name: Project SCHEMA
+# Description: This project aims to simplify the enrollment and management processes by
+#              reducing the clutter and only showing the essentials of a successful
+#              enrollment program.
+# Filename: new.html.erb
+# Description: Add to waitlist page allows students to add themselves to the waitlist.
+# Last modified on: 11/24/19
+-->
+
+<h1><font size="50">Add To Waitlist</font></h1>
+
+<strong>
+    <%= render 'form', waitlist: @waitlist %>
+</strong>
+
+<br>
+
+<%= link_to 'Back', :back, class: "red-button", data: {confirm: 'Are you sure you want to leave the page? You will lose any unsaved data!'} %>

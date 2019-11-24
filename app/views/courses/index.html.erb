@@ -1,0 +1,70 @@
+<!--
+# Project name: Project SCHEMA
+# Description: This project aims to simplify the enrollment and management processes by
+#              reducing the clutter and only showing the essentials of a successful
+#              enrollment program.
+# Filename: index.html.erb
+# Description: Course List page shows all the courses including some of their information.
+# Last modified on: 11/24/19
+-->
+
+<h1><font size="50">Course List</font></h1>
+
+<% if @courses.empty? %>
+  <div style = "position: relative; top: 100px">
+    <h1>Unfortunately, no courses have been created yet.</h1>
+    <br> 
+    <% if current_user.is_admin? %>
+      <%= link_to 'New Course', new_course_path, class: "blue-button" %>
+    <% end %>
+  </div>
+<% else %>
+  <table>
+    <thead>
+      <tr class="white">
+        <th>Course ID</th>
+        <th>Title</th>
+        <th>Professor</th>
+        <th>Minimum Seats</th>
+        <th>Maximum Seats</th>
+        <th>Available Seats</th>
+        <th colspan="3">Options</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @courses.order(:course_id).each do |course| %>
+        <% if !current_user.is_admin? && !current_user.is_professor? && EnrolledCourse.where("student_id = #{current_user.student.id} AND course_id = #{course.id}").count == 1 %>
+          <tr class="blue">
+        <% elsif course.seats_available  == 0 %>
+          <tr class="red">
+        <% elsif course.seats_available <= 6 %>
+          <tr class="yellow">
+        <% else %>
+          <tr class="green">
+        <% end %>
+          <td><%= course.course_id.upcase %></td>
+          <td><%= course.course_title.upcase %></td>
+          <td><%= course.user.first_name + " " + course.user.last_name %></td>
+          <td><%= course.minimum_seats %></td>
+          <td><%= course.maximum_seats %></td>
+          <td><%= course.seats_available %></td>
+          <td><%= link_to 'View', course %></td>
+          <td><%= link_to 'Edit', edit_course_path(course) if current_user.is_admin? || current_user.is_professor? %></td>
+          <td><%= link_to 'Delete', course, method: :delete, data: { confirm: "Are you sure you want to delete Course" + course.course_id + "'s records? You will not be able to restore the student's records!" } if current_user.is_admin? %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <br><br>
+  <% if current_user.is_admin?%>
+    <%= link_to 'Create New Course', new_course_path, class: "blue-button-long" %>
+  <% end %>
+  
+  <br>
+  <br>
+
+  <%= link_to 'Go to Dashboard', home_dashboard_path, class: "blue-button-long" %>
+<% end %>
+  

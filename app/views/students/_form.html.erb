@@ -1,0 +1,80 @@
+<!--
+# Project name: Project SCHEMA
+# Description: This project aims to simplify the enrollment and management processes by
+#              reducing the clutter and only showing the essentials of a successful
+#              enrollment program.
+# Filename: _form.html.erb
+# Description: Form for the student profiles
+# Last modified on: 11/24/19
+-->
+
+<%= form_with(model: student, local: true) do |form| %>
+  <% if student.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(student.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+      <ul>
+      <% student.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <strong>
+  <div class="field">
+    <%= form.label :major, "Major:" %>
+    <%= form.select :major, ["Accounting",
+                                    "African American Studies",
+                                    "American Sign Language",
+                                    "Art History",
+                                    "Art Education",
+                                    "Biology",
+                                    "Biomedical Engineering",
+                                    "Business Administration",
+                                    "Chemistry",
+                                    "Civil Engineering",
+                                    "Communication Studies",
+                                    "Computer Engineering",
+                                    "Computer Science",
+                                    "Criminology",
+                                    "Early Childhood Education",
+                                    "Economics",
+                                    "Education of the Deaf & Hard of Hearing",
+                                    "Elementary Education",
+                                    "Electrical Engineering",
+                                    "Engineering Science",
+                                    "English",
+                                    "Health & Exercise Science",
+                                    "History",
+                                    "Interactive Multimedia",
+                                    "International Studies",
+                                    "Integrative-STEM Education",
+                                    "Journalism and Professional Writing",
+                                    "Mathematics",
+                                    "Music",
+                                    "Nursing",
+                                    "Philosophy",
+                                    "Physics",
+                                    "Political Science",
+                                    "Psychology",
+                                    "Public Health",
+                                    "Sociology",
+                                    "Spanish",
+                                    "Special Education",
+                                    "Speech Pathology and Audiology",
+                                    "Technology Education/Pre-Engineering",
+                                    "Visual Arts",
+                                    "Women's, Gender, & Sexuality Studies"],
+                                    :prompt => "Select One" %>
+  </div>
+  </strong>
+  
+  <br>
+  
+  <div class="actions">
+    <%= form.submit "Submit", class: "green-button" %>
+  </div>
+
+  <br>
+
+<% end %>

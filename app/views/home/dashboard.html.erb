@@ -1,0 +1,39 @@
+<!--
+# Project name: Project SCHEMA
+# Description: This project aims to simplify the enrollment and management processes by
+#              reducing the clutter and only showing the essentials of a successful
+#              enrollment program.
+# Filename: dashboard.html.erb
+# Description: The dashboard page allows users to navigate to specific functionalies.
+#              NOTE: Buttons will vary based on user type!
+# Last modified on: 11/24/19
+-->
+
+<h1><font size="50">Dashboard</font></h1>
+
+<div style = "position: relative; top: 10px">
+    <%= link_to "View Course List", courses_path, class: "blue-button-long" %>
+</div>
+    
+<% if current_user.is_admin? || current_user.is_professor? %>
+    <div style = "position: relative; top: 40px">
+        <%= link_to "Manage Waitlist Entries", waitlists_path, class: "blue-button-long" %>
+    </div>
+
+    <div style = "position: relative; top: 70px">
+        <%= link_to "Manage User Accounts", users_path, class: "blue-button-long" %>
+    </div>
+
+    <div style = "position: relative; top: 100px">
+        <%= link_to "FAQs", home_faqs_path, class: "blue-button-long" %>
+    </div>
+<% else %>
+    <div style = "position: relative; top: 40px">
+        <%= link_to "Add to Waitlist", new_waitlist_path, class: "blue-button-long" %>
+    </div>
+    
+    <div style = "position: relative; top: 70px">
+        <%= link_to "FAQs", home_faqs_path, class: "blue-button-long" %>
+    </div>
+<% end %>
+

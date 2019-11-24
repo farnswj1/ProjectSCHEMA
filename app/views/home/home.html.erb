@@ -1,0 +1,38 @@
+<!--
+# Project name: Project SCHEMA
+# Description: This project aims to simplify the enrollment and management processes by
+#              reducing the clutter and only showing the essentials of a successful
+#              enrollment program.
+# Filename: home.html.erb
+# Description: Root page
+# Last modified on: 11/24/19
+-->
+
+<!DOCTYPE html>
+<html>
+    <body>
+        <body>
+        <center>
+            <h1><font size="50">Welcome to SCHEMA!</font></h1>
+            
+            <br>
+            <br>
+
+            <div style = "position: relative; top: 140px">
+                <% if !user_signed_in? %>
+                    <%= link_to "Log In", new_user_session_path, :class => "blue-button"  %>
+                    <%= link_to "Sign Up", new_user_registration_path, :class => "blue-button"  %>
+                <% else %>
+                    <% if current_user.student.nil? && !current_user.is_admin? && !current_user.is_professor? %>
+                        <%= link_to "Create Student Account", new_student_path, :class => "blue-button-long"  %>
+                    <% else %>
+                        <%= link_to "Go to Dashboard", home_dashboard_path, :class => "blue-button-long"  %>
+                    <% end %>
+                <% end %>
+
+            </div>
+
+            
+        </center>
+    </body>
+</html>

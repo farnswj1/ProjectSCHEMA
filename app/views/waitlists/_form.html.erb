@@ -1,0 +1,45 @@
+<!--
+# Project name: Project SCHEMA
+# Description: This project aims to simplify the enrollment and management processes by
+#              reducing the clutter and only showing the essentials of a successful
+#              enrollment program.
+# Filename: _form.html.erb
+# Description: Form for the waitlist entries
+# Last modified on: 11/24/19
+-->
+
+<%= form_with(model: waitlist, local: true) do |form| %>
+  <% if waitlist.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(waitlist.errors.count, "error") %> prohibited this waitlist from being saved:</h2>
+
+      <ul>
+      <% waitlist.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <br>
+  
+  <% if current_user.is_admin? || current_user.is_professor? %>
+    <div class="field">
+      <%= form.label :student_id, "Select the student who will be on the waitlist:" %>
+      <%= form.collection_select :student_id, Student.all.order(:id), :id, :full_name_with_id %>
+    </div>
+  <% end %>
+  
+  <br>
+
+  <div class="field">
+    <%= form.label :course_id, "Select a course:" %>
+    <%= form.collection_select :course_id, Course.all.order(:id), :id, :course_title_with_id %>
+  </div>
+
+  <br>
+
+  <div class="actions">
+    <%= form.submit 'Add to Waitlist' %>
+  </div>
+<% end %>

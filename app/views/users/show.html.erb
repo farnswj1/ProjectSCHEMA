@@ -1,0 +1,124 @@
+<!--
+# Project name: Project SCHEMA
+# Description: This project aims to simplify the enrollment and management processes by
+#              reducing the clutter and only showing the essentials of a successful
+#              enrollment program.
+# Filename: show.html.erb
+# Description: User Account Information page
+# Last modified on: 11/24/19
+-->
+
+<h1><font size="50">User Account Information</font></h1>
+
+<br>
+
+<% if @user.is_admin? %>
+  <p>
+    <strong>This user is an administrator!</strong>
+  </p>
+<% end %>
+
+<% if @user.is_professor? %>
+  <p>
+  <strong>This user is a professor!</strong>
+  </p>
+<% end %>
+
+<p>
+  <strong>First Name:</strong>
+  <%= @user.first_name %>
+</p>
+
+<p>
+  <strong>Last Name:</strong>
+  <%= @user.last_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<% if @user.student_id.nil? %>
+  <p>
+    <strong>This student does not a student profile yet!</strong>
+  </p>
+<% elsif !@user.student_id.nil? %>
+  <p>
+    <strong>Major:</strong>
+    <%= @user.student.major %>
+  </p>
+
+  <p>
+    <strong>Student ID:</strong>
+    <%= @user.student.id %>
+  </p>
+
+  <p>
+    <strong>GPA:</strong>
+    <%= @user.student.gpa %>
+  </p>
+
+  <br>
+
+  <% if @user.student.show_enrolled_courses.count == 0 %>
+    <p>
+      <strong>This student is currently not enrolled in any courses.</strong>
+    </p>
+    <br>
+  <% else %>
+    <table>
+      <h1>Enrolled Courses</h1>
+      <thead>
+        <tr class="white">
+          <th>Course ID</th>
+          <th>Title</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @user.student.show_enrolled_courses.each do |course| %>
+          <tr class="white">
+          <td><%= course.course_id %></td>
+          <td><%= course.course_title %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <br>
+  <% end %>
+
+<% elsif @user.is_professor? %>
+  <br>
+  <% if @user.show_courses_instructing.count == 0 %>
+    <p>
+      <strong>This professor is currently not instructing any courses.</strong>
+    </p>
+    <br>
+  <% else %>
+    <table>
+      <h1>Courses Instructing</h1>
+      <thead>
+        <tr class="white">
+          <th>Course ID</th>
+          <th>Title</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @user.show_courses_instructing.each do |course| %>
+          <tr class="white">
+            <td><%= course.course_id %></td>
+            <td><%= course.course_title %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <br>
+  <% end %>
+<% end %>
+
+<br>
+
+<%= link_to 'Edit', edit_user_path(@user), class: "blue-button" %>
+<%= link_to 'Back', users_path, class: "blue-button" %>

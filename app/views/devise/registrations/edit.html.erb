@@ -1,0 +1,60 @@
+<!--
+# Project name: Project SCHEMA
+# Description: This project aims to simplify the enrollment and management processes by
+#              reducing the clutter and only showing the essentials of a successful
+#              enrollment program.
+# Filename: edit.html.erb
+# Description: Edit Profile page allows users to change their passwords
+# Last modified on: 11/24/19
+-->
+
+<h1><font size="50">Edit <%= resource_name.to_s.humanize %> Profile</font></h1>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <strong>
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :current_password %> <i>(We need your current password to confirm your changes)</i><br />
+    <%= f.password_field :current_password, autocomplete: "current-password" %>
+  </div>
+  
+  <br>
+
+  <div class="field">
+    <%= f.label :password %> <i>(Leave blank if you don't want to change it)</i><br>
+    <em><%= @minimum_password_length %> characters minimum</em><br>
+    <%= f.password_field :password, autocomplete: "new-password" %>
+    <% if @minimum_password_length %>
+    <% end %>
+  </div>
+
+  <br>
+
+  <div class="field">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+  </strong>
+  
+  <br>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+
+<br>
+
+<h3>Cancel My Account</h3>
+
+<%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure you want to delete your account? You will lose all of your data!" }, method: :delete %>
+
+<br>
+<br>
+
+<%= link_to "Back", :back, class: "blue-button" %>

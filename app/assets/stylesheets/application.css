@@ -1,0 +1,240 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+ a.blue-button {
+    margin: auto;
+    text-decoration: none !important;
+    background-color: white;
+    border: 2px solid black;
+    color: black;
+    padding: 20px;
+    text-align: center;
+    vertical-align: middle;
+    display: inline-block;
+    width: 200px;
+    height: 40px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 20px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    
+}
+
+a.blue-button:hover {
+    background-color: rgb(14, 121, 192);
+    color: white;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+a.blue-button:active {
+    opacity: 0.5;
+    -webkit-transition-duration: 0s;
+    transition-duration: 0s;
+}
+
+a.blue-button-long {
+    margin: auto;
+    text-decoration: none !important;
+    background-color: white;
+    border: 2px solid black;
+    color: black;
+    padding: 20px;
+    text-align: center;
+    vertical-align: middle;
+    display: inline-block;
+    width: 450px;
+    height: 40px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 20px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    
+}
+
+a.blue-button-long:hover {
+    background-color: rgb(14, 121, 192);
+    color: white;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+a.blue-button-long:active {
+    opacity: 0.5;
+    -webkit-transition-duration: 0s;
+    transition-duration: 0s;
+}
+
+a.red-button {
+    margin: auto;
+    text-decoration: none !important;
+    background-color: white;
+    border: 2px solid black;
+    color: black;
+    padding: 20px;
+    text-align: center;
+    display: inline-block;
+    width: 200px;
+    height: 40px;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 20px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    
+}
+
+a.red-button:hover {
+    background-color: red;
+    color: white;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+a.red-button:active {
+    opacity: 0.5;
+    -webkit-transition-duration: 0s;
+    transition-duration: 0s;
+}
+
+a.green-button {
+    margin: auto;
+    text-decoration: none !important;
+    background-color: white;
+    border: 2px solid black;
+    color: black;
+    padding: 20px;
+    text-align: center;
+    display: inline-block;
+    width: 200px;
+    height: 40px;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 20px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    
+}
+
+a.green-button:hover {
+    background-color: rgb(15, 180, 15);
+    color: white;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+a.green-button:active {
+    opacity: 0.5;
+    -webkit-transition-duration: 0s;
+    transition-duration: 0s;
+}
+
+a.profile1-button {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    margin: auto;
+    text-decoration: none !important;
+    background-color: white;
+    border: 2px solid black;
+    color: black;
+    padding: 20px;
+    text-align: center;
+    display: inline-block;
+    width: 200px;
+    height: 40px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    
+}
+
+a.profile1-button:hover {
+    background-color: rgb(14, 121, 192);
+    color: white;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+a.profile1-button:active {
+    opacity: 0.5;
+    -webkit-transition-duration: 0s;
+    transition-duration: 0s;
+}
+
+a.profile2-button {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    margin: auto;
+    text-decoration: none !important;
+    background-color: white;
+    border: 2px solid black;
+    color: black;
+    padding: 20px;
+    text-align: center;
+    display: inline-block;
+    width: 200px;
+    height: 40px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    
+}
+
+a.profile2-button:hover {
+    background-color: rgb(14, 121, 192);
+    color: white;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+a.profile2-button:active {
+    opacity: 0.5;
+    -webkit-transition-duration: 0s;
+    transition-duration: 0s;
+}
+
+.red {
+    background-color: #ff1500;
+  }
+  
+.yellow {
+    background-color: #fffb00;
+}
+
+.green {
+    background-color: #00ff00;
+}
+
+.white {
+    background-color: #ffffff;
+}
+
+.blue {
+    background-color: rgb(0, 153, 255);
+}

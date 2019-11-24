@@ -1,0 +1,24 @@
+<!--
+# Project name: Project SCHEMA
+# Description: This project aims to simplify the enrollment and management processes by
+#              reducing the clutter and only showing the essentials of a successful
+#              enrollment program.
+# Filename: edit.html.erb
+# Description: Edit User Profile page
+# Last modified on: 11/24/19
+-->
+
+<% if current_user.is_admin? %>
+    <h1>Edit User Profile</h1>
+    <%= render 'form', user: @user %>
+    <br>
+    <%= link_to 'Back', @user, class: "red-button", data: { confirm: 'Are you sure you want to leave this page? Any changes will not be saved!' } %>
+<% else %>
+    <div style = "position: relative; top: 140px"><strong>
+        <h1>Please contact an administrator or professor if you<br>would like to have your profile modified.</h1></strong>
+        <br>    
+        <%= link_to 'Back', home_dashboard_path, class: "blue-button" %>
+    </div>
+<% end %>
+
+

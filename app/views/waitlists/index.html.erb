@@ -1,0 +1,45 @@
+<!--
+# Project name: Project SCHEMA
+# Description: This project aims to simplify the enrollment and management processes by
+#              reducing the clutter and only showing the essentials of a successful
+#              enrollment program.
+# Filename: index.html.erb
+# Description: Waitlist Entries page
+# Last modified on: 11/24/19
+-->
+
+<h1><font size="50">Waitlist Entries</font></h1>
+
+
+<% Course.all.each do |course| %>
+  <% if course.show_students_on_waitlist.count > 0 %>
+    <table>
+      <h1>Waitlist for <%= course.course_id %> (<%= course.seats_available %> Seats Available)</h1>
+      <thead>
+        <tr class="white">
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th colspan="2">Options</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% course.show_students_on_waitlist.each do |student| %>
+          <tr class="white">
+            <td><%= student.user.first_name %></td>
+            <td><%= student.user.last_name %></td>
+            <td><%= student.user.email %></td>
+            <td><%= link_to 'Enroll', {controller: "enrolled_courses", action: "create", enrolled_course: {student_id: student.id, course_id: course.id} }, method: :post %></td>
+            <td><%= link_to 'Remove', Waitlist.find_by(student_id: student.id, course_id: course.id), method: :delete, data: { confirm: 'Are you sure you want to remove ' + student.user.first_name + ' ' + student.user.last_name + ' from the ' + course.course_id + ' waitlist? You will not be able to undo this!' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <br><br>
+  <% end %>
+<% end %>
+
+<br><br>
+
+<%= link_to 'Go to Dashboard', home_dashboard_path, class: "blue-button-long" %>

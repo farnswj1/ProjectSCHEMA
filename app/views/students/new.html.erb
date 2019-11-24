@@ -1,0 +1,29 @@
+<!--
+# Project name: Project SCHEMA
+# Description: This project aims to simplify the enrollment and management processes by
+#              reducing the clutter and only showing the essentials of a successful
+#              enrollment program.
+# Filename: new.html.erb
+# Description: New Student Profile page
+# Last modified on: 11/24/19
+-->
+
+<h1><font size="50">New Student Profile</font></h1>
+
+<% if current_user.student.nil? && !current_user.is_admin && !current_user.is_professor %>
+    <%= render 'form', student: @student %>
+<% else %>
+    <div style = "position: relative; top: 100px">
+        <% if current_user.is_admin? %>
+            <h1>You are an administrator and do not need to create a student profile!</h1>
+        <% elsif  current_user.is_professor? %>
+            <h1>You are a professor and do not need to create a student profile!</h1>
+        <% else %>
+            <h1>You already have a student profile!</h1>
+        <% end %>
+        <br>
+        <%= link_to "Dashboard", home_dashboard_path, :class => "blue-button"  %>
+    </div>
+<% end %>
+    
+

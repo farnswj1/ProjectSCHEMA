@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  course_id: MyString
+  course_title: MyString
+  description: MyString
+  professor: one
+  minimum_seats: 1
+  maximum_seats: 1
+  seats_taken: 1
+
+two:
+  course_id: MyString
+  course_title: MyString
+  description: MyString
+  professor: two
+  minimum_seats: 1
+  maximum_seats: 1
+  seats_taken: 1

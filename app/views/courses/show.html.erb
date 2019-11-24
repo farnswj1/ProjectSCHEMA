@@ -1,0 +1,69 @@
+<!--
+# Project name: Project SCHEMA
+# Description: This project aims to simplify the enrollment and management processes by
+#              reducing the clutter and only showing the essentials of a successful
+#              enrollment program.
+# Filename: show.html.erb
+# Description: Course Information page shows the information about the course.
+# Last modified on: 11/24/19
+-->
+
+<h1><font size="50">Course Information</font></h1>
+
+<p>
+  <strong>ID:</strong>
+  <%= @course.course_id.upcase %>
+</p>
+
+<p>
+  <strong>Course Title:</strong>
+  <%= @course.course_title %>
+</p>
+
+<p>
+  <strong>Professor:</strong>
+  <%= @course.user.first_name + " " + @course.user.last_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @course.user.email %>
+</p>
+
+<p>
+  <strong>Minimum Seats:</strong>
+  <%= @course.minimum_seats %>
+</p>
+
+<p>
+  <strong>Maximum Seats:</strong>
+  <%= @course.maximum_seats %>
+</p>
+
+<p>
+  <strong>Available Seats:</strong>
+  <%= @course.maximum_seats - EnrolledCourse.where(course_id: @course.id).count %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @course.description %>
+</p>
+
+<br>
+
+<% if current_user.is_admin? || current_user.is_professor? %>
+  <%= link_to 'Edit', edit_course_path(@course), class: "blue-button" %>
+<% else %>
+  <% if EnrolledCourse.where("student_id = #{current_user.student.id} AND course_id = #{@course.id}").count == 0 %>
+    <% if @course.seats_available > 0 %>
+      <%= link_to 'Enroll', {controller: "enrolled_courses", action: "create", enrolled_course: {student_id: current_user.student.id, course_id: @course.id} }, method: :post, class: "green-button" %>
+    <% end %>
+  <% else %>
+    <%= link_to 'Drop', {controller: "enrolled_courses", action: "destroy", id: EnrolledCourse.where(course_id: @course.id, student_id: current_user.student.id).first.id}, method: :delete, class: "red-button", data: { confirm: 'Are you sure you want to drop ' + @course.course_id + '?' } %>
+  <% end %>
+<% end %>
+
+<%= link_to 'View Roster', roster_path(@course) , class: "blue-button" %>
+
+<%= link_to 'Back', courses_path, class: "blue-button" %>

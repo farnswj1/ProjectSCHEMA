@@ -1,0 +1,53 @@
+<!--
+# Project name: Project SCHEMA
+# Description: This project aims to simplify the enrollment and management processes by
+#              reducing the clutter and only showing the essentials of a successful
+#              enrollment program.
+# Filename: _form.html.erb
+# Description: Form for the user accounts
+# Last modified on: 11/24/19
+-->
+
+<% if current_user.is_admin %>
+  <%= form_with(model: user, local: true) do |form| %>
+    <% if user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+        <ul>
+          <% user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <strong><%= form.label :first_name, "First Name:" %></strong>
+      <%= form.text_field :first_name %>
+    </div>
+
+    <div class="field">
+      <strong><%= form.label :last_name, "Last Name:" %></strong>
+      <%= form.text_field :last_name %>
+    </div>
+
+    <br>
+
+    <div class="field">
+      <strong>Click the box if the user is an administrator:<%= form.check_box :is_admin %><strong>
+    </div>
+    
+    <div class="field">
+      <strong>Click the box if the user is a professor: <%= form.check_box :is_professor %></strong>
+    </div>
+
+    <br>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+
+    <br>
+  <% end %>
+<% end %>

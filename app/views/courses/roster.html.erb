@@ -1,0 +1,48 @@
+<!--
+# Project name: Project SCHEMA
+# Description: This project aims to simplify the enrollment and management processes by
+#              reducing the clutter and only showing the essentials of a successful
+#              enrollment program.
+# Filename: roster.html.erb
+# Description: Roster page for the course
+# Last modified on: 11/24/19
+-->
+
+<h1><font size="50">Course Roster for <%= @course.course_id %></font></h1>
+<% if @course.show_roster.count == 0 %>
+    <br><h1>Unfortunately, nobody has enrolled in this course yet!</h1><br>
+<% else %>
+<table>
+    <thead>
+      <tr class="white">
+        <th>Student ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <% if current_user.is_admin? || current_user.is_professor? %>
+          <th colspan="2">Options</th>
+        <% else %>
+          <th colspan="2"></th>
+        <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @course.show_roster.each do |student| %>
+        <tr class="white">
+          <td><%= student.id %></td>
+          <td><%= student.user.first_name %></td>
+          <td><%= student.user.last_name %></td>
+          <td><%= student.user.email %></td>
+          <td><%= link_to 'View', student.user if current_user.is_admin? || current_user.is_professor? %></td>    
+          <td><%= link_to 'Remove', {controller: "enrolled_courses", action: "destroy", id: EnrolledCourse.where(course_id: @course.id, student_id: student.id).first.id}, method: :delete, data: { confirm: 'Are you sure you want to drop ' + student.user.first_name + ' ' + student.user.last_name + ' from ' + @course.course_id + '?'} if current_user.is_admin? %></td>
+          </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+  <br>
+  <br>
+  
+  <%= link_to 'Back', @course, class: "blue-button" %>

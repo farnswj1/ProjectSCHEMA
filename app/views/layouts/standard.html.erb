@@ -1,0 +1,30 @@
+<!--
+# Project name: Project SCHEMA
+# Description: This project aims to simplify the enrollment and management processes by
+#              reducing the clutter and only showing the essentials of a successful
+#              enrollment program.
+# Filename: standard.html.erb
+# Description: Header previously used for the app
+# Last modified on: 11/24/19
+-->
+
+<html>
+    <head>
+        <title>SCHEMA</title>
+        <%= csrf_meta_tags %>
+        <%= csp_meta_tag %>
+
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+        <!--<a class="position:absolute; top:0; right:0;">
+            <h1>Hello</h1>
+        </a>-->
+        <%= link_to 'Logout', root_path , class: "profile-button"%>
+    </head>
+
+    <body style="background-color:lightskyblue;">
+        <center><h1>Welcome To SCHEMA!</h1></center>
+        <%= yield %>
+    </body>
+</html>

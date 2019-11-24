@@ -1,0 +1,62 @@
+<!--
+# Project name: Project SCHEMA
+# Description: This project aims to simplify the enrollment and management processes by
+#              reducing the clutter and only showing the essentials of a successful
+#              enrollment program.
+# Filename: _form.html.erb
+# Description: Form for course
+# Last modified on: 11/24/19
+-->
+
+<%= form_with(model: course, local: true) do |form| %>
+  <% if course.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
+
+      <ul>
+      <% course.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :course_id, "ID: (ex: CSC415-01)" %>
+    <%= form.text_field :course_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :course_title, "Course Title:" %>
+    <%= form.text_field :course_title %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :user_id, "Select a professor:" %>
+    <%= form.collection_select :user_id, User.where("is_professor = 'true'").order(:id), :id, :full_name_with_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :minimum_seats, "Minimum Seats:" %>
+    <%= form.select :minimum_seats, 1..30 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :maximum_seats, "Maximum Seats:" %>
+    <%= form.select :maximum_seats, 1..50 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description, "Course Description:" %>
+    <%= form.text_area :description, rows: "15", cols: "80" %>
+  </div>
+
+  <br>
+  
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+  <br>
+
+<% end %>

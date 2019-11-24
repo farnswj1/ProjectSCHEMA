@@ -1,0 +1,34 @@
+<!--
+# Project name: Project SCHEMA
+# Description: This project aims to simplify the enrollment and management processes by
+#              reducing the clutter and only showing the essentials of a successful
+#              enrollment program.
+# Filename: new.html.erb
+# Description: Forgot Your Password page allows users to reset their passwords via email
+# Last modified on: 11/24/19
+-->
+
+<h1><font size="50">Forgot Your Password?</font></h1>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <br>
+
+  <strong>
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+  </strong>
+
+  <br>
+
+  <div class="actions">
+    <%= f.submit "Send Me Reset Password Instructions" %>
+  </div>
+<% end %>
+
+<br>
+
+<%= render "devise/shared/links" %>

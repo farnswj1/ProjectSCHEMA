@@ -1,0 +1,43 @@
+<!--
+# Project name: Project SCHEMA
+# Description: This project aims to simplify the enrollment and management processes by
+#              reducing the clutter and only showing the essentials of a successful
+#              enrollment program.
+# Filename: new.html.erb
+# Description: Log In page
+# Last modified on: 11/24/19
+-->
+
+<h1><font size="50">Log In</font></h1>
+
+<br>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <strong><%= f.label :email %></strong>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <strong><%= f.label :password %></strong>
+    <%= f.password_field :password, autocomplete: "current-password" %>
+  </div>
+
+  <br>
+  
+  <% if devise_mapping.rememberable? %>
+    <div class="field">
+      <strong>Remember me:<%= f.check_box :remember_me %></strong>
+    </div>
+  <% end %>
+
+  <br>
+
+  <div class="actions">
+    <%= f.submit "Log In" %>
+  </div>
+
+  <br>
+<% end %>
+
+<%= render "devise/shared/links" %>
