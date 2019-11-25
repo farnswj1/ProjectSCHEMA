@@ -18,11 +18,11 @@ Recommended Software: Git
 #Installation
 Ensure your device has Ruby 2.6.4 and Rails 5.2.3 before attempting to run this program. Use Git to retrieve the program. To retrieve the program via Git, enter in your terminal: 
 
-‘git clone https://github.com/farnswj1/ProjectSCHEMA.git’
+*‘git clone https://github.com/farnswj1/ProjectSCHEMA.git’*
 
 Another option is to download directly from the link, but there is no guarantee that this will allow the program to run properly. It is strongly advised to use Git instead.
 
-Once the program is in your directory, go to the src/ directory, where the application is located, and enter ‘bundle install’. The program will install the gems needed for the program. Finally, run the server.
+Once the program is in your directory, go to the src/ directory, where the application is located, and enter *‘bundle install’*. The program will install the gems needed for the program. Finally, run the server.
 
 
 ## Program Use
