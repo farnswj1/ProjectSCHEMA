@@ -26,11 +26,8 @@ class Course < ApplicationRecord
       numericality: { greater_than_or_equal_to: 1, only_integer: true }
 
     validates :maximum_seats, presence: true,
-      numericality: { greater_than_or_equal_to: :minimum_seats, only_integer: true }
+      numericality: { greater_than_or_equal_to: :minimum_value_for_maximum_seats, only_integer: true }
 
-    validates :seats_taken, presence: true,
-      numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: :maximum_seats, only_integer: true }
-  
   #Functions
 
   #  Function: show_roster
@@ -63,5 +60,14 @@ class Course < ApplicationRecord
   #    Post-condition: Returns the number of available seats for the course.
   def seats_available
     maximum_seats - EnrolledCourse.where(course_id: id).count
+  end
+
+  def minimum_value_for_maximum_seats
+    seats_taken = EnrolledCourse.where(course_id: id).count
+    if seats_taken > minimum_seats
+      seats_taken
+    else
+      minimum_seats
+    end
   end
 end

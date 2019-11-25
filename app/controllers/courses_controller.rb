@@ -127,6 +127,6 @@ class CoursesController < ApplicationController
     #    Pre-condition: The user must be logged in and be an admin.
     #    Post-condition: The params passed into the courses controller are accepted.
     def course_params
-      params.require(:course).permit(:course_id, :course_title, :description, :user_id, :minimum_seats, :maximum_seats, :seats_taken)
+      params.require(:course).permit(:course_id, :course_title, :description, :user_id, :minimum_seats, :maximum_seats)
     end
 end
