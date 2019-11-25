@@ -1,6 +1,6 @@
 
 # SCHEMA
-(Student Course Helper & Enrollment Management Application)
+Student Course Helper & Enrollment Management Application
 
 GitHub: https://github.com/farnswj1/ProjectSCHEMA.git
 
