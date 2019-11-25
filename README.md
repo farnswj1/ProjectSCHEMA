@@ -1,24 +1,2 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Project SCHEMA
+This is a web application that allows users to manage enrollment by allowing students to enroll/drop courses while also allowing professors and administrators to handle waitlist entries submitted by the students. Administrators have the ability to manage enrollment, manage user accounts, and create/modify/delete courses, meanwhile professors can revise the course information if necessary.
