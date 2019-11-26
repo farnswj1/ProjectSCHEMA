@@ -41,6 +41,10 @@ An important feature that administrators have is that they can grant users privi
 Every user can access the FAQs page to learn more about the application and its features.
 
 
+## Maintenance
+SCHEMA will be maintained by the original developer of the project. Users can download and submit updated versions of the software, including any addition features or bug fixes. They may be approved and the changes will be made to the master branch.
+
+
 ## Issues Not Addressed
 The program currently doesn’t establish prerequisites for the courses, so students can enroll in any course. There is also no system that keeps track of the students’ previous courses and grades for those courses, which will determine if the student is eligible to enroll in a particular course.
 
