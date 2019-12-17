@@ -17,7 +17,7 @@ Recommended Software: Git
 
 
 ## Installation
-Ensure your device has Ruby 2.6.4 and Rails 5.2.3 before attempting to run this program. Use Git to retrieve the program. Also, create a superuser called *‘sysadmin’* in PostgreSQL since the program is currently set up to run on that user. The default password is located in the config/database.yml file. The password can be changed, however it must match the password used for *'sysadmin'* in PostgreSQL.
+Ensure your device has Ruby 2.6.4 and Rails 5.2.3 before attempting to run this program. Use Git to retrieve the program. Also, create a superuser called *sysadmin* in PostgreSQL since the program is currently set up to run on that user. The default password is located in the *config/database.yml* file. The password can be changed, however it must match the password used for *sysadmin* in PostgreSQL.
 
 To retrieve the program via Git, enter in your terminal: 
 
@@ -25,7 +25,7 @@ To retrieve the program via Git, enter in your terminal:
 
 Another option is to download directly from the link, but there is no guarantee that this will allow the program to run properly. It is strongly advised to use Git instead.
 
-Once the program is in your directory, go to the src/ directory, where the application is located, and enter *‘bundle install’*. The program will install the gems needed for the program. Also enter *‘rails db:setup’* or *‘bundle exec rake db:setup’* to set up the database. Finally, run the server.
+Once the program is in your directory, go to the src/ directory, where the application is located, and enter *‘bundle install’*. The program will install the gems needed for the program. Also enter *‘rails db:setup’* or *‘bundle exec rake db:setup’* to set up the database. Finally, run the server via *'rails s'*.
 
 
 ## Program Use
