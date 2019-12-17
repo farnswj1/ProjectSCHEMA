@@ -10,9 +10,13 @@ This is an open-source web application that allows users to manage enrollment by
 
 ## System Requirements
 Device: Computer/Desktop (not for mobile devices)
+
 Recommended OS: Windows, MacOS, Linux
+
 Software: Ruby 2.6.4, Rails 5.2.3, PostgresSQL 9.2
+
 Storage Size: 35MB
+
 Recommended Software: Git
 
 
