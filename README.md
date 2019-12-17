@@ -16,7 +16,7 @@ Storage Size: 35MB
 Recommended Software: Git
 
 
-#Installation
+# Installation
 Ensure your device has Ruby 2.6.4 and Rails 5.2.3 before attempting to run this program. Use Git to retrieve the program. Also, create a superuser called *‘sysadmin’* in PostgreSQL since the program is currently set up to run on that user. The default password is located in the config/database.yml file. The password can be changed, however it must match the password used for *'sysadmin'* in PostgreSQL.
 
 To retrieve the program via Git, enter in your terminal: 
